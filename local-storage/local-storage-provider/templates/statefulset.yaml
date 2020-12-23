@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: local-stateful-service
+spec:
+  selector:
+    matchLabels:
+      app: local-stateful-service
+  serviceName: "local-stateful-service"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: local-stateful-service
+    spec:
+      containers:
+      - name: local-stateful-service
+        image: createfiles:latest
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: pv-1-claim
+          mountPath: /vol1
+      volumes:
+        - name: pv-1-claim
+          persistentVolumeClaim:
+            claimName: pv-1-claim

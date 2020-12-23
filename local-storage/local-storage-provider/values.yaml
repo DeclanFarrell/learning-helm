@@ -1,0 +1,10 @@
+# Default values for local-storage-provider.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+storage:
+  storageClassName: local-storage
+  storageSize: 10Gi
+  node: minikube
+  hostPathPrefix: /data/app-volumes
+  volume1: local-storage

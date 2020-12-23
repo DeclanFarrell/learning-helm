@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pv-1-claim
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  volumeName: pv-1
+  resources:
+    requests:
+      storage: {{ .Values.storage.storageSize }}
+  storageClassName: {{ .Values.storage.storageClassName }}
